@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Todo;
 
 class TodoController extends Controller
 {
 	public $restful = true;
+
+	public function index() {
+		TodoController::getIndex();
+	}
 	
 	public function getIndex() {
 		$todos = Todo::all();
-		return View::make("index")->with("todos", $todos);
+		return view("index")->with("todos", $todos);
 	}
 
 	public function postAdd() {
